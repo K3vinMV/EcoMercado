@@ -26,7 +26,7 @@
 <nav class="main-nav navbar navbar-expand-lg">
   <div class="container">
     <!-- Logo -->
-    <a class="navbar-brand text-dark fw-bold" href="index.html"> 
+    <a class="navbar-brand text-dark fw-bold" href="{{ route('home') }}"> 
       EcoMercado Universitario
     </a>
     <!-- Toogle Button -->
@@ -39,13 +39,10 @@
       <!-- Navigation Links -->
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="index.html">Home </a>
+          <a class="nav-link" href="{{ route('home') }}">Home </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="about.html">About </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="contact.html">Contact</a>
+          <a class="nav-link" href="about.html">Productos </a>
         </li>
       </ul>
       <!-- Social Link -->
@@ -73,55 +70,41 @@
 <!-- Main Content End -->
 
 
-<section class="footer">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-6 mx-auto text-center">
-        <div class="footer-logo">
-          <a class="navbar-brand text-dark fw-bold" href="index.html"> 
-            EcoMercado Universitario
-          </a>
-        </div>
+<section class="footer border-top">
+<div class="container-fluid">
+  <div class="row justify-content-center text-center">
+    <!-- Logo -->
+    <div class="col-lg-4">
+      <div class="footer-logo">
+        <a class="navbar-brand text-dark fw-bold" href="{{ route('home') }}"> 
+          EcoMercado Universitario
+        </a>
       </div>
     </div>
-    <div class="row">
-      <div class="col-lg-6 mx-auto">
-        <div class="footer-nav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">Home </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="about.html">About </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact</a>
-            </li>
-          </ul>
-        </div>
+  </div>
+
+  <div class="row justify-content-center text-center">
+    <!-- Navegación -->
+    <div class="col-lg-4">
+      <div class="footer-nav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('home') }}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">Productos</a>
+          </li>
+        </ul>
       </div>
     </div>
-    <div class="row">
-      <div class="col-lg-6 mx-auto">
-        <div class="sociale-icon">
-          <ul>
-            <li>
-              <a href="#"><i class="fa fa-facebook"></i></a>
-            </li>
-            <li>
-              <a href="#"><i class="fa fa-twitter"></i></a>
-            </li>
-            <li>
-              <a href="#"><i class="fa fa-instagram"></i></a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
+  </div>
+</div>
+
+
     <div class="row">
       <div class="col-lg-12">
         <div class="copy-right">
-          <p>© Copyright <span id="copyrightYear"></span> - All Rights Reserved by <a href="https://staticmania.com/" target="_blank">StaticMania</a> Distributed By <a href="https://themewagon.com/" target="blank">ThemeWagon</a></p>
+          <p>© Copyright <span id="copyrightYear"></span> - EcoMercado CUCEI</p>
         </div>
       </div>
     </div>

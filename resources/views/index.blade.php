@@ -33,12 +33,16 @@
 
 <section class="blog">
   <div class="container">
-    <div class="row">
-      <div class="col-lg-8">
-        <div class="blog-section-title">
-          <h2>Articles</h2>
-          <p>View the latest news on Blogger</p>
+    <div class="row mb-5">
+        <div class="col-lg-4 text-start">
+            <div class="blog-section-title">
+                <h2>Productos</h2>
+                <p>Descubre nuestra selección de productos sustentables diseñados para estudiantes comprometidos con el medio ambiente.</p>
+            </div>
         </div>
+    </div>
+
+      <div class="col-lg-8 mx-auto">
         <article class="blog-post">
           <div class="blog-post-thumb">
             <img src="images/blog/blog-thum-1.png" alt="blog-thum" />
@@ -255,139 +259,6 @@
               </li>
             </ul>
           </nav>
-        </div>
-      </div>
-      <div class="col-lg-4">
-        <div class="blog-post-widget">
-          <div class="latest-widget-title">
-            <h2>Trending post</h2>
-          </div>
-          <div class="latest-widget">
-            <div class="latest-widget-thum">
-              <a href="single-blog.html">
-                <img src="images/blog/blog-thum-8.png" alt="blog-thum" /></a>
-              <div class="icon">
-                <a href="single-blog.html">
-                  <img src="images/blog/icon.svg" alt="icon" /></a>
-              </div>
-            </div>
-            <div class="latest-widget-content">
-              <div class="content-title">
-                <a href="single-blog.html">Five Things You Need to Know to Start Your Day</a>
-              </div>
-              <div class="content-meta">
-                <ul>
-                  <li>
-                    <i class="fa fa-clock-o"></i>
-                    October 19, 2020 - 2 min
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="latest-widget">
-            <div class="latest-widget-thum">
-              <a href="single-blog.html">
-                <img src="images/blog/blog-thum-9.png" alt="blog-thum" /></a>
-              <div class="icon">
-                <a href="single-blog.html">
-                  <img src="images/blog/icon.svg" alt="icon" /></a>
-              </div>
-            </div>
-            <div class="latest-widget-content">
-              <div class="content-title">
-                <a href="single-blog.html">Five Things You Need to Know to Start Your Day</a>
-              </div>
-              <div class="content-meta">
-                <ul>
-                  <li>
-                    <i class="fa fa-clock-o"></i>
-                    October 19, 2020 - 2 min
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="latest-widget">
-            <div class="latest-widget-thum">
-              <a href="single-blog.html">
-                <img src="images/blog/blog-thum-10.png" alt="blog-thum" /></a>
-              <div class="icon">
-                <a href="single-blog.html">
-                  <img src="images/blog/icon.svg" alt="icon" /></a>
-              </div>
-            </div>
-            <div class="latest-widget-content">
-              <div class="content-title">
-                <a href="single-blog.html">Five Things You Need to Know to Start Your Day</a>
-              </div>
-              <div class="content-meta">
-                <ul>
-                  <li>
-                    <i class="fa fa-clock-o"></i>
-                    October 19, 2020 - 2 min
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="latest-widget">
-            <div class="latest-widget-thum">
-              <a href="single-blog.html">
-                <img src="images/blog/blog-thum-11.png" alt="blog-thum" /></a>
-              <div class="icon">
-                <a href="single-blog.html">
-                  <img src="images/blog/icon.svg" alt="icon" /></a>
-              </div>
-            </div>
-            <div class="latest-widget-content">
-              <div class="content-title">
-                <a href="single-blog.html">Five Things You Need to Know to Start Your Day</a>
-              </div>
-              <div class="content-meta">
-                <ul>
-                  <li>
-                    <i class="fa fa-clock-o"></i>
-                    October 19, 2020 - 2 min
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="instagram">
-  <a href="#">
-    <i class="fa fa-instagram" aria-hidden="true"></i>
-    <span>@Mary_Astor</span>
-  </a>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="instagram-item">
-
-          <div class="instagram-item-thum">
-            <img src="images/blog/case-studies-1.png" alt="image">
-          </div>
-          <div class="instagram-item-thum">
-            <img src="images/blog/case-studies-2.png" alt="image">
-          </div>
-          <div class="instagram-item-thum">
-            <img src="images/blog/case-studies-3.png" alt="image">
-          </div>
-          <div class="instagram-item-thum">
-            <img src="images/blog/case-studies-4.png" alt="image">
-          </div>
-          <div class="instagram-item-thum">
-            <img src="images/blog/case-studies-5.png" alt="image">
-          </div>
-          <div class="instagram-item-thum">
-            <img src="images/blog/case-studies-6.png" alt="image">
-          </div>
         </div>
       </div>
     </div>
