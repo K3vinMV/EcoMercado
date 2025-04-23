@@ -13,11 +13,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
   <!-- Theme Stylesheet -->
-  <link href="css/style.css" rel="stylesheet" />
+  <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
 
   <!--Favicon-->
   <link rel="shortcut icon" href="images/favicon.svg" type="image/x-icon" />
-  <link rel="icon" href="images/favicon.svg" type="image/x-icon" />
+  <link rel="icon" href="{{ asset('images/favicon.svg') }}" type="image/x-icon" />
 </head>
 
 <body>
@@ -111,16 +111,13 @@
   </div>
 </section>
 
-<!-- Google Map -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9rV6yesIygoVKTD6QLf_iCa9eiIIHqZ0&libraries=geometry">
-</script>
 <!-- Vendor JS -->
-<script src="vendor/jQuery/jquery.min.js"></script>
-<script src="vendor/bootstrap/bootstrap.min.js"></script>
-<script src="vendor/slick/slick.min.js"></script>
-<script src="vendor/g-map/gmap.js"></script>
+<script src="{{ asset('vendor/jQuery/jquery.min.js') }}"></script>
+<script src="{{ asset('vendor/bootstrap/bootstrap.min.js') }}"></script>
+<script src="{{ asset('vendor/slick/slick.min.js') }}"></script>
+<script src="{{ asset('vendor/g-map/gmap.js') }}"></script>
 <!-- Main JS -->
-<script src="js/script.js"></script>
+<script src="{{ asset('js/script.js') }}"></script>
 </body>
 
 </html>
