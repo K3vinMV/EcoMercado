@@ -44,6 +44,9 @@
         <li class="nav-item">
           <a class="nav-link" href="{{ route('productos.index') }}">Productos </a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('blogs.index') }}">Blog </a>
+        </li>
       </ul>
       @guest
       <!-- Login and Register Links -->

@@ -10,6 +10,9 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('productos', ProductoController::class);
 });
 
+Route::middleware(['auth'])->group(function () {
+    Route::resource('blogs', \App\Http\Controllers\BlogController::class);
+});
 
 Route::middleware([
     'auth:sanctum',
