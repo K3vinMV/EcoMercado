@@ -20,6 +20,7 @@ return new class extends Migration
             $table->boolean('destacado')->default(false);
             $table->integer('stock')->default(0);
             $table->timestamps();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
         });
     }
 

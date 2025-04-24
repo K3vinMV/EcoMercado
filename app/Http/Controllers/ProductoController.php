@@ -4,15 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Models\Producto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Facades\Storage;
 
 class ProductoController extends Controller
 {
+    use AuthorizesRequests;
     /**
-     * Mostrar todos los productos.
+     * Mostrar todos los productos del usuario autenticado.
      */
     public function index()
     {
-        $productos = Producto::all();
+        $productos = Producto::where('user_id', Auth::id())->paginate(10);
         return view('productos.index', compact('productos'));
     }
 
@@ -25,53 +30,60 @@ class ProductoController extends Controller
     }
 
     /**
-     * Guardar un nuevo producto en la base de datos.
+     * Guardar un nuevo producto.
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'nombre' => 'required|string|max:255',
-            'descripcion' => 'required|string',
+            'descripcion' => 'nullable|string',
             'precio' => 'required|numeric|min:0',
-            'imagen' => 'required|image|mimes:jpeg,png,jpg|max:2048',
-            'destacado' => 'boolean',
+            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'stock' => 'required|integer|min:0',
         ]);
 
-        $data = $request->all();
+        // Asegura que 'destacado' esté presente como booleano
+        $validated['destacado'] = $request->has('destacado');
 
-        // Manejo de la imagen
+        // Asegura que esté el user_id
+        $validated['user_id'] = Auth::id();
+
+        // Imagen
         if ($request->hasFile('imagen')) {
-            $data['imagen'] = $request->file('imagen')->store('productos', 'public');
+            $validated['imagen'] = $request->file('imagen')->store('productos', 'public');
         }
 
-        Producto::create($data);
+        Producto::create($validated);
 
-        return redirect()->route('productos.index')->with('success', 'Producto creado con éxito.');
+        return redirect()->route('productos.index')->with('success', 'Producto creado exitosamente.');
     }
 
     /**
-     * Mostrar un producto específico.
+     * Mostrar un producto.
      */
     public function show(Producto $producto)
     {
+        $this->authorize('view', $producto);
         return view('productos.show', compact('producto'));
     }
 
     /**
-     * Mostrar formulario para editar un producto.
+     * Formulario para editar.
      */
     public function edit(Producto $producto)
     {
+        $this->authorize('update', $producto);
         return view('productos.edit', compact('producto'));
     }
 
     /**
-     * Actualizar un producto en la base de datos.
+     * Actualizar producto.
      */
     public function update(Request $request, Producto $producto)
     {
-        $request->validate([
+        $this->authorize('update', $producto);
+
+        $data = $request->validate([
             'nombre' => 'required|string|max:255',
             'descripcion' => 'nullable|string',
             'precio' => 'required|numeric|min:0',
@@ -80,9 +92,6 @@ class ProductoController extends Controller
             'stock' => 'required|integer|min:0',
         ]);
 
-        $data = $request->all();
-
-        // Manejo de la imagen (si se actualiza)
         if ($request->hasFile('imagen')) {
             $data['imagen'] = $request->file('imagen')->store('productos', 'public');
         }
@@ -93,11 +102,20 @@ class ProductoController extends Controller
     }
 
     /**
-     * Eliminar un producto.
+     * Eliminar producto.
      */
     public function destroy(Producto $producto)
     {
+        $this->authorize('delete', $producto);
+
+        // Eliminar la imagen si existe
+        if ($producto->imagen) {
+            Storage::disk('public')->delete($producto->imagen);
+        }
+
+        // Eliminar el producto
         $producto->delete();
+
         return redirect()->route('productos.index')->with('success', 'Producto eliminado con éxito.');
     }
 }

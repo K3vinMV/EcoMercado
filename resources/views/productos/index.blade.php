@@ -1,6 +1,6 @@
 @extends('layouts.template')
 
-@section ('content')
+@section('content')
 
 <div class="container my-5">
   <div class="d-flex justify-content-between align-items-center mb-4">
@@ -43,24 +43,24 @@
               <td>${{ number_format($producto->precio, 2) }}</td>
               <td>{{ $producto->stock }}</td>
               <td>
-                @if ($producto->destacado)
-                  <span class="badge bg-success">Sí</span>
+               @if ($producto->destacado)
+                  <span class="badge bg-success text-white fw-bold">Sí</span>
                 @else
-                  <span class="badge bg-secondary">No</span>
+                  <span class="badge bg-secondary text-white fw-bold">No</span>
                 @endif
               </td>
               <td class="text-end">
-                <a href="{{ route('productos.show', $producto->id) }}" class="btn btn-outline-info btn-sm me-1">
-                  <i class="bi bi-eye"></i>
+                <a href="{{ route('productos.show', $producto->id) }}" class="btn btn-sm btn-outline-info me-1">
+                  <i class="bi bi-eye"></i> <span class="d-none d-md-inline">Ver</span>
                 </a>
-                <a href="{{ route('productos.edit', $producto->id) }}" class="btn btn-outline-primary btn-sm me-1">
-                  <i class="bi bi-pencil"></i>
+                <a href="{{ route('productos.edit', $producto->id) }}" class="btn btn-sm btn-outline-primary me-1">
+                  <i class="bi bi-pencil"></i> <span class="d-none d-md-inline">Editar</span>
                 </a>
                 <form action="{{ route('productos.destroy', $producto->id) }}" method="POST" class="d-inline" onsubmit="return confirm('¿Seguro que deseas eliminar este producto?');">
                   @csrf
                   @method('DELETE')
-                  <button type="submit" class="btn btn-outline-danger btn-sm">
-                    <i class="bi bi-trash"></i>
+                  <button type="submit" class="btn btn-sm btn-outline-danger">
+                    <i class="bi bi-trash"></i> <span class="d-none d-md-inline">Eliminar</span>
                   </button>
                 </form>
               </td>
@@ -71,7 +71,7 @@
     </div>
 
     <div class="mt-4">
-      {{ $productos->links() }} {{-- Si estás usando paginación --}}
+      {{ $productos->links() }}
     </div>
   @else
     <div class="alert alert-info">

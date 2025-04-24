@@ -25,9 +25,9 @@
           <p class="card-text">
             <span class="fw-semibold">Destacado:</span> 
             @if ($producto->destacado)
-              <span class="badge bg-success">Sí</span>
+              <span class="badge bg-success text-white">Sí</span>
             @else
-              <span class="badge bg-secondary">No</span>
+              <span class="badge bg-secondary text-white">No</span>
             @endif
           </p>
 
