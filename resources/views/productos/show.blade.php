@@ -31,6 +31,16 @@
             @endif
           </p>
 
+          <!-- Mostrar el contacto del usuario -->
+          <p class="card-text">
+            <span class="fw-semibold">Contacto del vendedor:</span>
+            @if ($producto->user->contacto)
+              <a href="mailto:{{ $producto->user->contacto }}" class="text-decoration-none">{{ $producto->user->contacto }}</a>
+            @else
+              <span class="text-muted">No disponible</span>
+            @endif
+          </p>
+
           <div class="mt-4">
           @auth
               @if (auth()->id() === $producto->user_id)
@@ -39,7 +49,7 @@
                   </a>
               @endif
           @endauth
-            <a href="{{ route('productos.index') }}" class="btn btn-outline-secondary">
+            <a href="{{ route('producto') }}" class="btn btn-outline-secondary">
               <i class="bi bi-arrow-left me-1"></i> Volver
             </a>
           </div>

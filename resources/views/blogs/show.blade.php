@@ -5,8 +5,11 @@
     <h1>{{ $blog->titulo }}</h1>
 
     @if ($blog->imagen)
-        <div class="mb-4">
-            <img src="{{ asset('storage/' . $blog->imagen) }}" class="img-fluid rounded" alt="Imagen del blog">
+        <div class="mb-4 text-center">
+            <img src="{{ asset('storage/' . $blog->imagen) }}" 
+                 class="img-fluid rounded" 
+                 style="max-height: 400px; width: auto; object-fit: contain; margin: 0 auto;" 
+                 alt="Imagen del blog">
         </div>
     @endif
 
@@ -14,6 +17,6 @@
         {!! nl2br(e($blog->contenido)) !!}
     </div>
 
-    <a href="{{ route('blogs.index') }}" class="btn btn-secondary mt-4">Volver</a>
+    <a href="{{ route('blog') }}" class="btn btn-secondary mt-4">Volver</a>
 </div>
 @endsection

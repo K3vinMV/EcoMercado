@@ -20,6 +20,6 @@ class BlogPolicy
     
     public function view(User $user, Blog $blog)
     {
-        return $user->id === $blog->user_id;
+        return true;
     }
 }

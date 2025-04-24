@@ -45,7 +45,7 @@
           <a class="nav-link" href="{{ route('producto') }}">Productos </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('blogs.index') }}">Blog </a>
+          <a class="nav-link" href="{{ route('blog') }}">Blog </a>
         </li>
       </ul>
       @guest
@@ -117,7 +117,10 @@
             <a class="nav-link" href="{{ route('home') }}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('productos.index') }}">Productos</a>
+            <a class="nav-link" href="{{ route('producto') }}">Productos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('blog') }}">Blog </a>
           </li>
         </ul>
       </div>

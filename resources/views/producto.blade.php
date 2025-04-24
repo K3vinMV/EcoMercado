@@ -19,9 +19,9 @@
                         <div class="card h-100">
                             @if ($producto->imagen)
                                 <img src="{{ asset('storage/' . $producto->imagen) }}"
-                                     class="card-img-top object-fit-cover"
+                                     class="card-img-top"
                                      alt="{{ $producto->nombre }}"
-                                     style="height: 200px; width: 100%; object-fit: cover;">
+                                     style="max-height: 200px; width: auto; object-fit: contain; margin: 0 auto;">
                             @endif
                             <div class="card-body">
                                 <h5 class="card-title">{{ $producto->nombre }}</h5>

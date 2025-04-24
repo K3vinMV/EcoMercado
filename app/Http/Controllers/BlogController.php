@@ -46,7 +46,6 @@ class BlogController extends Controller
 
     public function show(Blog $blog)
     {
-        $this->authorize('view', $blog);
         return view('blogs.show', compact('blog'));
     }
 
@@ -90,5 +89,11 @@ class BlogController extends Controller
         $blog->delete();
 
         return redirect()->route('blogs.index')->with('success', 'Blog eliminado.');
+    }
+
+    public function publicIndex()
+    {
+        $blogs = Blog::latest()->paginate(9);
+        return view('blog', compact('blogs'));
     }
 }
