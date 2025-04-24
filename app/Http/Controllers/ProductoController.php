@@ -63,7 +63,6 @@ class ProductoController extends Controller
      */
     public function show(Producto $producto)
     {
-        $this->authorize('view', $producto);
         return view('productos.show', compact('producto'));
     }
 
@@ -118,4 +117,20 @@ class ProductoController extends Controller
 
         return redirect()->route('productos.index')->with('success', 'Producto eliminado con éxito.');
     }
+
+    public function publicIndex(Request $request)
+    {
+        $query = Producto::query();
+
+        if ($request->has('busqueda')) {
+            $busqueda = $request->input('busqueda');
+            $query->where('nombre', 'like', "%$busqueda%")
+                ->orWhere('descripcion', 'like', "%$busqueda%");
+        }
+
+        $productos = $query->where('stock', '>', 0)->paginate(10);
+
+        return view('producto', compact('productos'));
+    }
+
 }

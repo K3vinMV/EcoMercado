@@ -14,6 +14,9 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('blogs', \App\Http\Controllers\BlogController::class);
 });
 
+Route::get('/producto', [ProductoController::class, 'publicIndex'])->name('producto');
+
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),

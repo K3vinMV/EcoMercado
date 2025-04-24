@@ -32,9 +32,13 @@
           </p>
 
           <div class="mt-4">
-            <a href="{{ route('productos.edit', $producto->id) }}" class="btn btn-primary me-2">
-              <i class="bi bi-pencil-square me-1"></i> Editar
-            </a>
+          @auth
+              @if (auth()->id() === $producto->user_id)
+                  <a href="{{ route('productos.edit', $producto->id) }}" class="btn btn-primary me-2">
+                      <i class="bi bi-pencil-square me-1"></i> Editar
+                  </a>
+              @endif
+          @endauth
             <a href="{{ route('productos.index') }}" class="btn btn-outline-secondary">
               <i class="bi bi-arrow-left me-1"></i> Volver
             </a>

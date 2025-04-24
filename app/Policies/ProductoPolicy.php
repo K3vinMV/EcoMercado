@@ -13,7 +13,7 @@ class ProductoPolicy
      */
     public function view(User $user, Producto $producto): bool
     {
-        return $user->id === $producto->user_id;
+        return true;
     }
 
     public function update(User $user, Producto $producto): bool
