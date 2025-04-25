@@ -1,268 +1,106 @@
 @extends('layouts.template')
 
-@section ('content')
+@section('content')
 
-<section class="featured">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <article class="featured-post">
-          <div class="featured-post-content">
-            <div class="featured-post-author">
-              <img src="images/author.png" alt="author" />
-              <p>By <span>Mary Astor</span></p>
-            </div>
-            <a href="single-blog.html" class="featured-post-title">
-              Bolso de material reciclado
-            </a>
-            <ul class="featured-post-meta">
-              <li>
-                <i class="fa fa-clock-o"></i>
-                October 19, 2020 - 3 min read
-              </li>
-            </ul>
-          </div>
-          <div class="featured-post-thumb">
-            <img src="images/featured-post.jpg" alt="feature-post-thumb" />
-          </div>
-        </article>
-      </div>
+<section class="featured py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            @if($blogs->count())
+                @php $destacado = $blogs->first(); @endphp
+                <div class="col-12">
+                    <article class="featured-post d-flex flex-wrap align-items-center shadow rounded-4 p-4 bg-white">
+                        <div class="col-md-6">
+                            <div class="featured-post-content pe-3">
+                                <div class="featured-post-author d-flex align-items-center mb-2">
+                                    <p class="mb-0">Por <span>{{ $destacado->user->name }}</span></p>
+                                </div>
+                                <a href="{{ route('blogs.show', $destacado->id) }}" class="featured-post-title h4 d-block mb-3 text-decoration-none text-dark">
+                                    {{ $destacado->titulo }}
+                                </a>
+                                <ul class="list-inline text-muted small">
+                                    <li class="list-inline-item">
+                                        <i class="fa fa-clock-o"></i> {{ $destacado->created_at->format('M d, Y') }}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        @if($destacado->imagen)
+                        <div class="col-md-6">
+                            <div class="featured-post-thumb text-end">
+                                <img src="{{ asset('storage/' . $destacado->imagen) }}" alt="feature-post-thumb" class="img-fluid rounded">
+                            </div>
+                        </div>
+                        @endif
+                    </article>
+                </div>
+            @endif
+        </div>
     </div>
-  </div>
 </section>
 
-<section class="blog">
-  <div class="container">
-    <div class="row mb-5">
-        <div class="col-lg-4 text-start">
-            <div class="blog-section-title">
-                <h2>Productos</h2>
+<section class="blog py-5">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-lg-6">
+                <h2 class="fw-bold">Últimos productos</h2>
                 <p>Descubre nuestra selección de productos sustentables diseñados para estudiantes comprometidos con el medio ambiente.</p>
             </div>
         </div>
-    </div>
 
-      <div class="col-lg-8 mx-auto">
-        <article class="blog-post">
-          <div class="blog-post-thumb">
-            <img src="images/blog/blog-thum-1.png" alt="blog-thum" />
-          </div>
-          <div class="blog-post-content">
-            <div class="blog-post-tag">
-              <a href="category.html">Travel</a>
-            </div>
-            <div class="blog-post-title">
-              <a href="single-blog.html">Bolsas ecologicas</a>
-            </div>
-            <div class="blog-post-meta">
-              <ul>
-                <li>By <a href="about.html">Mary Astor</a></li>
-                <li>
-                  <i class="fa fa-clock-o"></i>
-                  October 19, 2020 - 2 min
-                </li>
-              </ul>
-            </div>
-            <p>
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-              nonumy.
-            </p>
-            <a href="single-blog.html" class="blog-post-action">read more <i class="fa fa-angle-right"></i></a>
-          </div>
-        </article>
-        <article class="blog-post">
-          <div class="blog-post-thumb">
-            <a href="single-blog.html">
-              <img src="images/blog/blog-thum-2.png" alt="blog-thum" /></a>
-          </div>
-          <div class="blog-post-content">
-            <div class="blog-post-tag">
-              <a href="category.html">Travel</a>
-            </div>
-            <div class="blog-post-title">
-              <a href="single-blog.html">Cubiertos y popotes reutilizables</a>
-            </div>
-            <div class="blog-post-meta">
-              <ul>
-                <li>By <a href="about.html">Mary Astor</a></li>
-                <li>
-                  <i class="fa fa-clock-o"></i>
-                  October 19, 2020 - 2 min
-                </li>
-              </ul>
-            </div>
-
-            <p>
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-              nonumy.
-            </p>
-            <a href="single-blog.html" class="blog-post-action">read more <i class="fa fa-angle-right"></i></a>
-          </div>
-        </article>
-        <article class="blog-post">
-          <div class="blog-post-thumb">
-            <a href="single-blog.html">
-              <img src="images/blog/blog-thum-3.png" alt="blog-thum" /></a>
-          </div>
-          <div class="blog-post-content">
-            <div class="blog-post-tag">
-              <a href="category.html">Travel</a>
-            </div>
-            <div class="blog-post-title">
-              <a href="single-blog.html">Cuadernos y libretas recicladas</a>
-            </div>
-            <div class="blog-post-meta">
-              <ul>
-                <li>By <a href="about.html">Mary Astor</a></li>
-                <li>
-                  <i class="fa fa-clock-o"></i>
-                  October 19, 2020 - 2 min
-                </li>
-              </ul>
-            </div>
-
-            <p>
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-              nonumy.
-            </p>
-            <a href="single-blog.html" class="blog-post-action">read more <i class="fa fa-angle-right"></i></a>
-          </div>
-        </article>
-        <article class="blog-post">
-          <div class="blog-post-thumb">
-            <a href="single-blog.html">
-              <img src="images/blog/blog-thum-4.png" alt="blog-thum" /></a>
-          </div>
-          <div class="blog-post-content">
-            <div class="blog-post-tag">
-              <a href="category.html">Travel</a>
-            </div>
-            <div class="blog-post-title">
-              <a href="single-blog.html">Five Things You Need to Know to Start Your Day</a>
-            </div>
-            <div class="blog-post-meta">
-              <ul>
-                <li>By <a href="about.html">Mary Astor</a></li>
-                <li>
-                  <i class="fa fa-clock-o"></i>
-                  October 19, 2020 - 2 min
-                </li>
-              </ul>
-            </div>
-
-            <p>
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-              nonumy.
-            </p>
-            <a href="single-blog.html" class="blog-post-action">read more <i class="fa fa-angle-right"></i></a>
-          </div>
-        </article>
-        <article class="blog-post">
-          <div class="blog-post-thumb">
-            <a href="single-blog.html">
-              <img src="images/blog/blog-thum-5.png" alt="blog-thum" /></a>
-          </div>
-          <div class="blog-post-content">
-            <div class="blog-post-tag">
-              <a href="category.html">Travel</a>
-            </div>
-            <div class="blog-post-title">
-              <a href="single-blog.html">Five Things You Need to Know to Start Your Day</a>
-            </div>
-            <div class="blog-post-meta">
-              <ul>
-                <li>By <a href="about.html">Mary Astor</a></li>
-                <li>
-                  <i class="fa fa-clock-o"></i>
-                  October 19, 2020 - 2 min
-                </li>
-              </ul>
-            </div>
-
-            <p>
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-              nonumy.
-            </p>
-            <a href="single-blog.html" class="blog-post-action">read more <i class="fa fa-angle-right"></i></a>
-          </div>
-        </article>
-        <article class="blog-post">
-          <div class="blog-post-thumb">
-            <a href="single-blog.html">
-              <img src="images/blog/blog-thum-6.png" alt="blog-thum" /></a>
-          </div>
-          <div class="blog-post-content">
-            <div class="blog-post-tag">
-              <a href="category.html">Travel</a>
-            </div>
-            <div class="blog-post-title">
-              <a href="single-blog.html">Five Things You Need to Know to Start Your Day</a>
-            </div>
-            <div class="blog-post-meta">
-              <ul>
-                <li>By <a href="about.html">Mary Astor</a></li>
-                <li>
-                  <i class="fa fa-clock-o"></i>
-                  October 19, 2020 - 2 min
-                </li>
-              </ul>
-            </div>
-
-            <p>
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-              nonumy.
-            </p>
-            <a href="single-blog.html" class="blog-post-action">read more <i class="fa fa-angle-right"></i></a>
-          </div>
-        </article>
-        <article class="blog-post">
-          <div class="blog-post-thumb">
-            <a href="single-blog.html">
-              <img src="images/blog/blog-thum-7.png" alt="blog-thum" /></a>
-          </div>
-          <div class="blog-post-content">
-            <div class="blog-post-tag">
-              <a href="category.html">Travel</a>
-            </div>
-            <div class="blog-post-title">
-              <a href="single-blog.html">Five Things You Need to Know to Start Your Day</a>
-            </div>
-            <div class="blog-post-meta">
-              <ul>
-                <li>By <a href="about.html">Mary Astor</a></li>
-                <li>
-                  <i class="fa fa-clock-o"></i>
-                  October 19, 2020 - 2 min
-                </li>
-              </ul>
-            </div>
-            <p>
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-              nonumy.
-            </p>
-            <a href="single-blog.html" class="blog-post-action">read more <i class="fa fa-angle-right"></i></a>
-          </div>
-        </article>
-        <div class="blog-post-pagination">
-          <nav aria-label="Page navigation example" class="nav-bg">
-            <ul class="pagination">
-              <li class="page-item">
-                <a class="page-link active" href="#">1</a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item"><a class="page-link" href="#">4</a></li>
-              <li class="page-item">
-                <a class="page-link" href="#">
-                  <i class="fa fa-angle-right"></i>
-                </a>
-              </li>
-            </ul>
-          </nav>
+        <div class="row g-4">
+            @foreach ($productos->take(6) as $producto)
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm">
+                        @if ($producto->imagen)
+                        <img src="{{ asset('storage/' . $producto->imagen) }}" class="card-img-top" style="height: 200px; object-fit: cover;" alt="{{ $producto->nombre }}">
+                        @endif
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $producto->nombre }}</h5>
+                            <p class="card-text text-muted">{{ Str::limit($producto->descripcion, 80) }}</p>
+                            <p class="fw-bold">${{ number_format($producto->precio, 2) }}</p>
+                            <a href="{{ route('productos.show', $producto->id) }}" class="btn btn-sm btn-outline-primary">Ver más</a>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
         </div>
-      </div>
+
+        <div class="text-center mt-4">
+            <a href="{{ route('producto') }}" class="btn btn-outline-secondary">Ver todos los productos</a>
+        </div>
     </div>
-  </div>
+</section>
+
+<section class="blogs py-5 bg-light">
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-lg-6">
+                <h2 class="fw-bold">Últimos blogs</h2>
+                <p>Explora artículos recientes publicados por estudiantes que comparten su experiencia sustentable.</p>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            @foreach ($blogs->skip(1)->take(6) as $blog)
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm">
+                        @if ($blog->imagen)
+                        <img src="{{ asset('storage/' . $blog->imagen) }}" class="card-img-top" style="height: 200px; object-fit: cover;" alt="{{ $blog->titulo }}">
+                        @endif
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $blog->titulo }}</h5>
+                            <p class="card-text text-muted">{{ Str::limit(strip_tags($blog->contenido), 80) }}</p>
+                            <a href="{{ route('blogs.show', $blog->id) }}" class="btn btn-sm btn-outline-primary">Leer más</a>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="{{ route('blog') }}" class="btn btn-outline-secondary">Ver todos los blogs</a>
+        </div>
+    </div>
 </section>
 
 @endsection
