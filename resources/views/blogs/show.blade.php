@@ -4,6 +4,11 @@
 <div class="container mt-5">
     <h1>{{ $blog->titulo }}</h1>
 
+    <!-- Mostrar el nombre del usuario -->
+    <div class="mt-4">
+        <p class="fw-semibold">Autor: {{ $blog->user->name }}</p>
+    </div>
+
     @if ($blog->imagen)
         <div class="mb-4 text-center">
             <img src="{{ asset('storage/' . $blog->imagen) }}" 

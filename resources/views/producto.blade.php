@@ -36,10 +36,6 @@
                 </div>
             @endforeach
         </div>
-
-        <div class="mt-4">
-            {{ $productos->withQueryString()->links() }}
-        </div>
     @else
         <p class="text-muted">No se encontraron productos disponibles.</p>
     @endif

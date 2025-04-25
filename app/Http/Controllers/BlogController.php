@@ -93,7 +93,7 @@ class BlogController extends Controller
 
     public function publicIndex()
     {
-        $blogs = Blog::latest()->paginate(9);
+        $blogs = Blog::all();
         return view('blog', compact('blogs'));
     }
 }

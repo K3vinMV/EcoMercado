@@ -128,7 +128,7 @@ class ProductoController extends Controller
                 ->orWhere('descripcion', 'like', "%$busqueda%");
         }
 
-        $productos = $query->where('stock', '>', 0)->paginate(10);
+        $productos = $query->get();
 
         return view('producto', compact('productos'));
     }

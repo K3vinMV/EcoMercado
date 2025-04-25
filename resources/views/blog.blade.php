@@ -5,9 +5,9 @@
     <h1 class="mb-4">Todos los Blogs</h1>
 
     @if($blogs->count())
-        <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="row g-4">
             @foreach ($blogs as $blog)
-                <div class="col">
+                <div class="col-12 col-md-4"> <!-- Aquí cambiamos a col-md-4 para 3 columnas por fila -->
                     <a href="{{ route('blogs.show', $blog->id) }}" class="text-decoration-none text-dark">
                         <div class="card h-100 shadow-sm">
                             @if ($blog->imagen)
@@ -27,10 +27,6 @@
                     </a>
                 </div>
             @endforeach
-        </div>
-
-        <div class="mt-4">
-            {{ $blogs->withQueryString()->links() }}
         </div>
     @else
         <p class="text-muted">Aún no hay blogs disponibles.</p>

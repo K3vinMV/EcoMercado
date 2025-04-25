@@ -1,6 +1,6 @@
 @extends('layouts.template')
 
-@section ('content')
+@section('content')
 
 <div class="container my-5">
   <div class="card shadow-lg border-0 rounded-4">
@@ -29,6 +29,11 @@
             @else
               <span class="badge bg-secondary text-white">No</span>
             @endif
+          </p>
+
+          <!-- Mostrar el nombre del usuario -->
+          <p class="card-text">
+            <span class="fw-semibold">Vendedor:</span> {{ $producto->user->name }}
           </p>
 
           <!-- Mostrar el contacto del usuario -->
