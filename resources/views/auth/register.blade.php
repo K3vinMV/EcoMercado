@@ -47,7 +47,7 @@
                 </div>
             @endif
 
-            <form method="POST" action="{{ route('register') }}">
+            <form method="POST" action="{{ route('register') }}" id="registerForm">
                 @csrf
                 <div class="mb-3">
                     <label for="name" class="form-label">Nombre completo</label>
@@ -79,10 +79,25 @@
                 </div>
 
                 <div class="text-center">
-                    <p class="text-muted">¿Ya tienes una cuenta? <a href="{{ route('login') }}" class="text-brand fw-bold">Inicia sesión</a></p>
+                    <p class="text-muted">¿Ya tienes una cuenta? 
+                        <a href="{{ route('login') }}" class="text-brand fw-bold">Inicia sesión</a>
+                    </p>
                 </div>
             </form>
         </div>
     </div>
+
+    <!-- Script para validar correo -->
+    <script>
+    document.getElementById('registerForm').addEventListener('submit', function(event) {
+        const emailInput = document.getElementById('email').value.trim();
+        const requiredDomain = "@alumnos.udg.mx";
+        
+        if (!emailInput.endsWith(requiredDomain)) {
+            event.preventDefault(); // Detiene el envío del formulario
+            alert('El correo debe ser institucional y terminar en "@alumnos.udg.mx".');
+        }
+    });
+    </script>
 </body>
 </html>

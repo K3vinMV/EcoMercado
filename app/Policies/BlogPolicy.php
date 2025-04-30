@@ -10,12 +10,12 @@ class BlogPolicy
 {
     public function update(User $user, Blog $blog)
     {
-        return $user->id === $blog->user_id;
+        return $user->id === $blog->user_id || $user->is_admin;
     }
     
     public function delete(User $user, Blog $blog)
     {
-        return $user->id === $blog->user_id;
+        return $user->id === $blog->user_id || $user->is_admin;
     }
     
     public function view(User $user, Blog $blog)

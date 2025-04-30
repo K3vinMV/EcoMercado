@@ -18,12 +18,12 @@ class ProductoPolicy
 
     public function update(User $user, Producto $producto): bool
     {
-        return $user->id === $producto->user_id;
+        return $user->id === $producto->user_id || $user->is_admin;
     }
 
     public function delete(User $user, Producto $producto): bool
     {
-        return $user->id === $producto->user_id;
+        return $user->id === $producto->user_id || $user->is_admin;
     }
 
     public function create(User $user): bool

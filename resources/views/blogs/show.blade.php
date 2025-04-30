@@ -22,6 +22,25 @@
         {!! nl2br(e($blog->contenido)) !!}
     </div>
 
+    <!-- Botones solo para el autor o el admin -->
+    @auth
+        @if (auth()->id() === $blog->user_id || auth()->user()->is_admin)
+            <div class="mt-4 d-flex gap-2">
+                <a href="{{ route('blogs.edit', $blog->id) }}" class="btn btn-primary">
+                    <i class="bi bi-pencil-square me-1"></i> Editar
+                </a>
+
+                <form action="{{ route('blogs.destroy', $blog->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este blog?')">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">
+                        <i class="bi bi-trash me-1"></i> Eliminar
+                    </button>
+                </form>
+            </div>
+        @endif
+    @endauth
+
     <a href="{{ route('blog') }}" class="btn btn-secondary mt-4">Volver</a>
 </div>
 @endsection

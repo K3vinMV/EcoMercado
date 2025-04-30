@@ -31,12 +31,10 @@
             @endif
           </p>
 
-          <!-- Mostrar el nombre del usuario -->
           <p class="card-text">
             <span class="fw-semibold">Vendedor:</span> {{ $producto->user->name }}
           </p>
 
-          <!-- Mostrar el contacto del usuario -->
           <p class="card-text">
             <span class="fw-semibold">Contacto del vendedor:</span>
             @if ($producto->user->contacto)
@@ -47,13 +45,22 @@
           </p>
 
           <div class="mt-4">
-          @auth
-              @if (auth()->id() === $producto->user_id)
-                  <a href="{{ route('productos.edit', $producto->id) }}" class="btn btn-primary me-2">
-                      <i class="bi bi-pencil-square me-1"></i> Editar
-                  </a>
+            @auth
+              @if (auth()->id() === $producto->user_id || auth()->user()->is_admin)
+                <a href="{{ route('productos.edit', $producto->id) }}" class="btn btn-primary me-2">
+                  <i class="bi bi-pencil-square me-1"></i> Editar
+                </a>
+
+                <form action="{{ route('productos.destroy', $producto->id) }}" method="POST" class="d-inline">
+                  @csrf
+                  @method('DELETE')
+                  <button type="submit" class="btn btn-danger">
+                    <i class="bi bi-trash me-1"></i> Eliminar
+                  </button>
+                </form>
               @endif
-          @endauth
+            @endauth
+
             <a href="{{ route('producto') }}" class="btn btn-outline-secondary">
               <i class="bi bi-arrow-left me-1"></i> Volver
             </a>

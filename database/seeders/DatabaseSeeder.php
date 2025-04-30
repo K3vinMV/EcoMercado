@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'admin',
             'email' => 'test@admin.com',
             'password' => 'admin',
+            'is_admin' => true, // Asignar el rol de administrador
         ]);
 
         // Crear 10 usuarios más (con factory)
